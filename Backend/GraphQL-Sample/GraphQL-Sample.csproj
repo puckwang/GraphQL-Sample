@@ -9,11 +9,8 @@
 
     <ItemGroup>
         <PackageReference Include="Bogus" Version="34.0.2" />
+        <PackageReference Include="HotChocolate.AspNetCore" Version="12.7.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="GraphQL" />
     </ItemGroup>
 
 </Project>
