@@ -8,22 +8,22 @@ namespace GraphQL.Sample.Controllers;
 [Route("Api/Users")]
 public class UsersController : ControllerBase
 {
-    private readonly UserServices _userServices;
+    private readonly UserService _userService;
 
-    public UsersController(UserServices userServices)
+    public UsersController(UserService userService)
     {
-        _userServices = userServices;
+        _userService = userService;
     }
 
     [HttpGet]
     public IEnumerable<User> Get()
     {
-        return _userServices.GetAll();
+        return _userService.GetAll();
     }
 
     [HttpGet("{id}")]
     public User? Get(int id)
     {
-        return _userServices.Get(id);
+        return _userService.Get(id);
     }
 }

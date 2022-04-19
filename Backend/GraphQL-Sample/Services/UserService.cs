@@ -3,11 +3,11 @@ using GraphQL.Sample.Models;
 
 namespace GraphQL.Sample.Services;
 
-public class UserServices
+public class UserService
 {
     private readonly IList<User> _users;
 
-    public UserServices()
+    public UserService()
     {
         var faker = new Faker();
         _users = Enumerable.Repeat(0, 20)

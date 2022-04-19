@@ -3,7 +3,7 @@ using GraphQL.Sample.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
-services.AddSingleton<UserServices>();
+services.AddSingleton<UserService>();
 services.AddControllers();
 services.AddCors(options =>
     options.AddDefaultPolicy(policyBuilder => policyBuilder
