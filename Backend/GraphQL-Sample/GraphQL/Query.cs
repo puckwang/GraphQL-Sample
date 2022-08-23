@@ -1,18 +1,18 @@
 using GraphQL.Sample.Models;
-using GraphQL.Sample.Services;
+using GraphQL.Sample.Repositories;
 
 namespace GraphQL.Sample.GraphQL;
 
 public class Query
 {
-    private readonly UserService _userService;
+    private readonly UserRepository _userRepository;
 
-    public Query(UserService userService)
+    public Query(UserRepository userRepository)
     {
-        _userService = userService;
+        _userRepository = userRepository;
     }
 
-    public IList<User> GetUsers() => _userService.GetAll();
+    public IEnumerable<User> GetUsers() => _userRepository.GetAll();
 
-    public User? GetUser(int id) => _userService.Get(id);
+    public User? GetUser(int id) => _userRepository.Get(id);
 }

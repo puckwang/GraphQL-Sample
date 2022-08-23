@@ -1,12 +1,14 @@
 using GraphQL.Sample.GraphQL;
-using GraphQL.Sample.Services;
+using GraphQL.Sample.GraphQL.TypeExtensions;
+using GraphQL.Sample.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
-services.AddSingleton<UserService>();
+services.AddSingleton<UserRepository>();
 services
     .AddGraphQLServer()
+    .AddTypeExtension<UserTypeExtensions>()
     .AddQueryType<Query>();
 services.AddControllers();
 services.AddCors(options =>
