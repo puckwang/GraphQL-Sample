@@ -16,13 +16,13 @@ public class UserRepository
 
                 return new User
                 {
-                    Id = 3017 + 1,
-                    Name = "Puck Wang",
+                    Id = index,
+                    Name =  faker.Person.FullName,
                     Email = faker.Person.Email,
                     Phone = faker.Person.Phone,
                     Address = faker.Address.FullAddress(),
                     Avatar = faker.Person.Avatar,
-                    Website = "https://blog.puckwang.com/",
+                    Website = faker.Person.Website,
                     DateOfBirth = faker.Person.DateOfBirth
                 };
             })
