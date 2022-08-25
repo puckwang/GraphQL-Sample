@@ -9,7 +9,8 @@ services.AddSingleton<UserRepository>();
 services
     .AddGraphQLServer()
     .AddTypeExtension<UserTypeExtensions>()
-    .AddQueryType<Query>();
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>();
 services.AddControllers();
 services.AddCors(options =>
     options.AddDefaultPolicy(policyBuilder => policyBuilder
@@ -22,6 +23,7 @@ services.AddCors(options =>
 
 var app = builder.Build();
 app.UseAuthorization();
+app.MapControllers();
 app.MapControllers();
 app.MapGraphQL();
 app.UseCors();

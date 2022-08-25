@@ -9,18 +9,22 @@ public class UserRepository
 
     public UserRepository()
     {
-        var faker = new Faker();
         _users = Enumerable.Repeat(0, 20)
-            .Select((_, index) => new User
+            .Select((_, index) =>
             {
-                Id = index + 1,
-                Name = faker.Person.FullName,
-                Email = faker.Person.Email,
-                Phone = faker.Person.Phone,
-                Address = faker.Address.FullAddress(),
-                Avatar = faker.Person.Avatar,
-                Website = faker.Person.Website,
-                DateOfBirth = faker.Person.DateOfBirth
+                var faker = new Faker();
+
+                return new User
+                {
+                    Id = 3017 + 1,
+                    Name = "Puck Wang",
+                    Email = faker.Person.Email,
+                    Phone = faker.Person.Phone,
+                    Address = faker.Address.FullAddress(),
+                    Avatar = faker.Person.Avatar,
+                    Website = "https://blog.puckwang.com/",
+                    DateOfBirth = faker.Person.DateOfBirth
+                };
             })
             .ToList();
     }
@@ -44,7 +48,7 @@ public class UserRepository
     {
         return _users.Where(x => x.Id != id).Where(x => x.Id % id == 0);
     }
-    
+
     public Role GetRole(int id)
     {
         if (id % 5 == 0)
@@ -55,11 +59,30 @@ public class UserRepository
                 Name = "Admin"
             };
         }
-        
+
         return new Role
         {
             Id = 2,
             Name = "User"
         };
+    }
+
+    public User Create(CreateUser createUser)
+    {
+        var user = new User
+        {
+            Id = _users.Last().Id + 1,
+            Name = createUser.Name,
+            Email = createUser.Email,
+            Phone = createUser.Phone,
+            Address = createUser.Address,
+            Website = createUser.Website,
+            Avatar = createUser.Avatar,
+            DateOfBirth = createUser.DateOfBirth
+        };
+        
+        _users.Add(user);
+
+        return user;
     }
 }
